@@ -1,18 +1,24 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ msg }} {{ value }}</h1>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, inject } from "vue";
 
 export default defineComponent({
-  name: 'HelloWorld',
+  name: "HelloWorld",
   props: {
-    msg: String
-  }
-})
+    msg: String,
+    id: Number,
+    user: Object,
+  },
+  setup() {
+    const value = inject<boolean>("test");
+    return { value };
+  },
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
